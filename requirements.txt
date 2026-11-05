@@ -1,0 +1,13 @@
+# General dependencies; notebooks have not been retested together on pinned versions.
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+torch
+torchvision
+Pillow
+joblib
+jupyter
+ipykernel

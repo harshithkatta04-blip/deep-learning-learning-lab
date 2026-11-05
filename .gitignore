@@ -1,0 +1,25 @@
+# Notebook / Python
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+# Data / trained models
+/data/
+/dataset/
+**/data/
+**/dataset/
+*.zip
+*.csv
+*.h5
+*.keras
+*.pt
+*.pth
+*.pkl
+*.joblib
+saved_models/
+# OS
+.DS_Store
+Thumbs.db
