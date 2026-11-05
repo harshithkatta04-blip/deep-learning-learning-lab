@@ -1,35 +1,49 @@
-# Deep Learning Learning Lab
+Deep Learning: Applied Experiments
+A collection of end-to-end deep learning experiments spanning tabular classification, computer vision, audio recognition, and sequence modeling. The notebooks cover data preparation, neural network design, training strategies, evaluation, and comparative experimentation using TensorFlow/Keras and PyTorch.
+Projects
+Project	Focus	Results recorded in notebook
+[Cardiometabolic Risk Prediction — ANN](01-ann-cardiometabolic/ann_cardiometabolic_risk.ipynb)	Binary classification on a synthetic tabular dataset; exploratory analysis, stratified splitting, preprocessing, Keras Sequential and Functional APIs, class weighting, regularization, threshold tuning, and a logistic regression baseline	Test accuracy: 84.13%; F1: 0.3805; recall: 46.99%
+[Cats vs Dogs — CNN](02-cnn-cats-vs-dogs/cats_vs_dogs_cnn.ipynb)	Image classification; dataset validation, image pipelines, augmentation, convolutional architecture, batch normalization, callbacks, and evaluation	Test accuracy: 74.80%; precision: 75.00%; recall: 74.40%
+[Speech Command Recognition — CNN](03-cnn-speech-commands/speech_commands_cnn.ipynb)	Eight-class speech recognition; waveform processing, spectrogram features, model iterations, confusion-matrix analysis, and audio inference	Test accuracy: 88.17% across 1,200 recordings; test loss: 0.4645
+[Sequence Modeling — RNN, LSTM & GRU](04-rnn-sequence-models/rnn_lstm_gru_experiments.ipynb)	Sequence classification; recurrent architectures, backpropagation through time, gradient behavior, and gradient clipping	Exploratory experiments; comparative figures in the final report are manually entered and are not an automated benchmark
 
-Hands-on experiments developed while studying deep learning. These are **learning projects, not production-ready applications**. Notebooks preserve the original training/evaluation output; reported metrics have **not been independently reproduced** for this repository.
 
-## Contents
+The metrics above are recorded in the notebooks and have not been independently reproduced in a clean environment.
+Technical Scope
+- Frameworks: TensorFlow, Keras, PyTorch
+- Data science: NumPy, pandas, scikit-learn, Matplotlib
+- Modeling: Feedforward neural networks, convolutional neural networks, recurrent neural networks, LSTM, GRU
+- Evaluation: Train/validation/test separation, classification metrics, confusion matrices, model comparisons, and threshold analysis
+Repository Structure
+deep-learning-learning-lab/
+├── 01-ann-cardiometabolic/
+│   └── ann_cardiometabolic_risk.ipynb
+├── 02-cnn-cats-vs-dogs/
+│   └── cats_vs_dogs_cnn.ipynb
+├── 03-cnn-speech-commands/
+│   └── speech_commands_cnn.ipynb
+├── 04-rnn-sequence-models/
+│   └── rnn_lstm_gru_experiments.ipynb
+├── requirements.txt
+└── README.md
+Getting Started
+1. Clone the repository and create a Python virtual environment.
+2. Install the general dependencies:
+   pip install -r requirements.txt
+3. Launch Jupyter or open an individual notebook in Google Colab.
+4. Configure the dataset path and runtime dependencies for that notebook before running its cells.
+Environment note: The projects were developed in different environments. requirements.txt is a consolidated dependency reference, not a tested, version-locked environment. TensorFlow and PyTorch compatibility should be verified for the chosen Python version and platform.
+Data and Reproducibility
+Project	Dataset / execution requirements
+Cardiometabolic ANN	Uses a synthetic CSV dataset (8,000 records). The notebook contains a local Windows file path that must be updated to a locally available dataset.
+Cats vs Dogs	Uses an image dataset ZIP mounted from Google Drive in Colab. Provide the dataset separately and adjust the archive path.
+Speech Commands	Retrieves the TensorFlow-hosted mini Speech Commands dataset from the URL referenced in the notebook.
+RNN/LSTM/GRU	Contains multiple independent experiments with reused model/variable names. Execute the relevant sections in sequence; the final comparison table is illustrative rather than programmatically generated.
 
-| Notebook | What it covers | Recorded results |
-|---|---|---|
-| [ANN: Cardiometabolic risk](01-ann-cardiometabolic/ann_cardiometabolic_risk.ipynb) | 8,000-row **synthetic** dataset; EDA, stratified train/validation/test splits, preprocessing, Keras Sequential vs Functional, class weighting, regularization, threshold selection, logistic-regression baseline, model saving/reloading | Final test: accuracy **84.13%**, precision **31.97%**, recall **46.99%**, F1 **0.3805**, average precision **0.3187**. **Not suitable for clinical use.** |
-| [CNN: Cats vs Dogs](02-cnn-cats-vs-dogs/cats_vs_dogs_cnn.ipynb) | Image inspection, corruption/duplicate checks, stratified train/validation split, data pipelines, augmentation, a CNN with batch normalization, callbacks and final test evaluation | Final test: **74.80% accuracy**, **75.00% precision**, **74.40% recall**, **0.5279 loss** |
-| [CNN: Speech Commands](03-cnn-speech-commands/speech_commands_cnn.ipynb) | 8 spoken commands, waveform-to-spectrogram preprocessing, CNN architecture iterations, confusion matrix, single WAV inference, model export | Final test: **88.17% accuracy**, **0.4645 loss**, on 1,200 test recordings |
-| [RNN/LSTM/GRU Experiments](04-rnn-sequence-models/rnn_lstm_gru_experiments.ipynb) | Synthetic sequence classification, backpropagation through time, vanilla RNN vs LSTM vs GRU, gradient-flow and clipping experiments | Exploratory comparisons only; the final report cell includes **manually entered** figures, so it should not be treated as an automated benchmark |
 
-## Setup and reproducibility notes
-
-These notebooks were developed in different environments; use the original environment where possible. `requirements.txt` gives a **general dependency list**, not a tested lockfile. Install dependencies in a virtual environment, then open notebooks in Jupyter or Colab.
-
-**Dataset inputs are not included.**
-
-- **Cardiometabolic ANN:** Expects a synthetic CSV at an author's local Windows path in cell 2. Replace this with your own authorized dataset location (and document the dataset source before sharing publicly). Do not interpret synthetic-model performance as medical validation.
-- **Cats vs Dogs:** Expects a zip in a specific Google Drive folder (`/content/drive/MyDrive/archive (3).zip`). Supply a suitably licensed copy of the dataset and update the path. The notebook is Colab-specific.
-- **Speech Commands:** Downloads TensorFlow's `mini_speech_commands.zip` from the TensorFlow-hosted URL in the notebook when run in the expected directory structure.
-- **RNN experiments:** Several standalone explorations occur in one notebook. Some cells redefine models and variables; sequential execution and independent experiment reproducibility need cleanup. A later report cell manually enters benchmark numbers.
-
-### What to improve next
-
-1. Replace hard-coded local paths with configurable paths or environment variables.
-2. Record compatible environment versions and test notebooks from a clean runtime.
-3. Add standalone `README.md` files explaining datasets, key findings and limitations per experiment.
-4. For the RNN comparison, generate summary tables directly from experiment output rather than manually typed values.
-5. Add error analysis, repeat runs with fixed random seeds, and include baseline comparisons where appropriate.
-
-## Responsible usage
-
-These are educational experiments. The health-risk notebook uses synthetic data and **must not be used for clinical decisions**. No large datasets, credentials or model checkpoints are distributed in this repository.
+Datasets and large trained model files are not included in this repository. Refer to the notebook cells for preprocessing and training configurations.
+Scope and Limitations
+These experiments document model development and evaluation, rather than production deployment. Results may vary across library versions, hardware, random seeds, and dataset preparation. The cardiometabolic dataset is synthetic; its results do not constitute clinical validation and the model must not be used for medical decisions.
+Author
+Harshith Katta
+GitHub: @harshithkatta04-blip
